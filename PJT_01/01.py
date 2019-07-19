@@ -1,8 +1,10 @@
+'''
 import requests
 from pprint import pprint
 from datetime import datetime, timedelta
 from decouple import config
 import csv
+
 
 # 현재부터 과거까지의 원하는 주간을 입력합니다
 def week(week_number): # 원하는 만큼의 주간을 입력하세요.
@@ -44,15 +46,40 @@ with open('boxoffice.csv', 'w', newline='', encoding='utf-8') as f:
         weeklyBoxOfficeDicts = {}
 
         for weeklyBoxOfficeList in weeklyBoxOfficeLists:
-    
-            movieCd = weeklyBoxOfficeList.get('movieCd')
-            movieNm = weeklyBoxOfficeList.get('movieNm') 
-            audiCnt = weeklyBoxOfficeList.get('audiCnt')
+            if weeklyBoxOfficeList.get('movieCd') not in weeklyBoxOfficeDicts:
 
-            if movieCd not in weeklyBoxOfficeDicts:
-                weeklyBoxOfficeDicts['movieCd'] = movieCd
-                weeklyBoxOfficeDicts['movieNm'] = movieNm
-                weeklyBoxOfficeDicts['audiCnt'] = audiCnt
+                weeklyBoxOfficeDicts['movieCd'] = weeklyBoxOfficeList.get('movieCd')
+                weeklyBoxOfficeDicts['movieNm'] = weeklyBoxOfficeList.get('movieNm') 
+                weeklyBoxOfficeDicts['audiCnt'] = weeklyBoxOfficeList.get('audiCnt')
 
-             # Dictionary를 순회하며 key값에 맞는 value를 한줄씩 작성한다.
                 writer.writerow(weeklyBoxOfficeDicts)
+'''
+
+import csv
+import datetime
+import requests
+from decouple import config
+
+
+key = config('API_KEY')
+movie_data = {}
+for i in range(51):
+    targetDt = datetime.datetime(2019, 7, 13) - datetime.timedelta(weeks=i)
+    targetDt = targetDt.strftime('%Y%m%d')
+    api_url = f'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key={key}&targetDt={targetDt}&weekGb=0'
+    response = requests.get(api_url).json()
+
+    for movie in response['boxOfficeResult']['weeklyBoxOfficeList']:
+        if movie.get('movieCd') not in movie_data:
+            movie_data[movie.get('movieCd')] = {
+                                                'movieCd': movie.get('movieCd'),
+                                                'audiAcc': movie.get('audiAcc'),
+                                                'movieNm': movie.get('movieNm')
+                                            }
+
+with open('boxoffice.csv', 'w', encoding='utf-8') as f:
+    fieldnames = ['movieCd', 'audiAcc', 'movieNm'] 
+    csv_writer = csv.DictWriter(f, fieldnames=fieldnames)
+    csv_writer.writeheader()
+    for item in movie_data.values():
+        csv_writer.writerow(item)
