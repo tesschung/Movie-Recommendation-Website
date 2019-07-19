@@ -53,11 +53,6 @@ with open('boxoffice.csv', 'w', newline='', encoding='utf-8') as f:
                 weeklyBoxOfficeDicts['movieCd'] = movieCd
                 weeklyBoxOfficeDicts['movieNm'] = movieNm
                 weeklyBoxOfficeDicts['audiCnt'] = audiCnt
-                
-
-            #print(weeklyBoxOfficeDicts)
-            
-            #print(movieCd, movieNm, audiCnt, end='\n') 
 
              # Dictionary를 순회하며 key값에 맞는 value를 한줄씩 작성한다.
                 writer.writerow(weeklyBoxOfficeDicts)

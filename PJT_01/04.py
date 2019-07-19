@@ -21,38 +21,30 @@ with open('director_temp.csv', 'r', newline='', encoding='utf-8') as f:
             people.append(peopleCd)
         
         people = list(set(people)) #중복제거(동명이인살리기)
-        
+
         for person in people:
             base_url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/people/searchPeopleInfo.json'
             key = config('API_KEY')
             api_url = f'{base_url}?key={key}&peopleCd={person}'
 
             response = requests.get(api_url)
-            
-            #print(response)
 
             data = response.json()
-            #pprint(data)
 
             searchPeopleInfo = {}
 
             peopleInfo = data.get('peopleInfoResult').get('peopleInfo')
-
-            
-            #filmos = data.get('peopleInfoResult').get('peopleInfo').get('filmos')
-            #pprint(peopleInfo)
             peopleCd = peopleInfo.get('peopleCd')
-            #print(peopleCd)
             peopleNm = peopleInfo.get('peopleNm')
             repRoleNm = peopleInfo.get('repRoleNm')
             filmos = peopleInfo.get('filmos')[0] #filmo
+            
             movieNm = filmos.get('movieNm')
-
-            pprint(movieNm)
 
             searchPeopleInfo['peopleCd'] = peopleCd
             searchPeopleInfo['peopleNm'] = peopleNm
             searchPeopleInfo['repRoleNm'] = repRoleNm
             searchPeopleInfo['movieNm'] = movieNm #filmo
+            
 
             writer.writerow(searchPeopleInfo)

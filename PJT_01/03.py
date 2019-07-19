@@ -10,7 +10,7 @@ with open('movie.csv', 'r', newline='', encoding='utf-8') as f:
 
     with open('director_temp.csv', 'w', newline='', encoding='utf-8') as f:
     # 저장할 필드의 이름을 미리 지정한다.
-        fieldnames = ('peopleCd','peopleNm')
+        fieldnames = ('peopleCd', 'peopleNm', 'filmoNames')
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         # 필드 이름을 csv 파일 최상단에 작성한다.
         writer.writeheader() # 최상단 카테고리
@@ -38,9 +38,11 @@ with open('movie.csv', 'r', newline='', encoding='utf-8') as f:
 
             peopleCd = peopleList.get('peopleCd')
             peopleNm = peopleList.get('peopleNm')
+            filmoNames = peopleList.get('filmoNames')
 
             searchPeopleList['peopleCd'] = peopleCd
             searchPeopleList['peopleNm'] = peopleNm
+            searchPeopleList['filmoNames'] = filmoNames
 
             # print(searchPeopleList)
         

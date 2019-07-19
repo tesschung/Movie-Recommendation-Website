@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 from decouple import config
 import csv
 
-
 with open('boxoffice.csv', 'r', newline='', encoding='utf-8') as f:
     reader = csv.DictReader(f)
     
