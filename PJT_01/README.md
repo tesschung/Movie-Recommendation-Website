@@ -1,10 +1,12 @@
-[TOC]
 
-## Movie Crawler
 
-**Crawling Movie Data using ''영화진흥위원회 오픈 API'' with Python**
+## Project_01: 
+
+## Crawling Movie Data using ''영화진흥위원회 오픈 API'' with Python
 
 `python 3.7`
+
+[TOC]
 
 
 
@@ -101,20 +103,21 @@ API `영화진흥위원회 오픈 API`
   감독명 peopleNm
   해당 결과를 **movie.csv**에 저장합니다.
   
+
 (선택) 배우 정보, 
-  
+
 -배우 actors
-  
+
 -배우명 peopleNm
-  
+
 -배역명 cast
-  
+
 배급사 정보
-  
+
 -영화사명 companyNm
-  
+
    등을 추가적으로 수집할 수 있습니다.
-  
+
   
 
 3. 영화진흥위원회 오픈 API(영화인 정보) 
