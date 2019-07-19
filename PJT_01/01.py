@@ -1,4 +1,4 @@
-'''
+
 import requests
 from pprint import pprint
 from datetime import datetime, timedelta
@@ -53,8 +53,8 @@ with open('boxoffice.csv', 'w', newline='', encoding='utf-8') as f:
                 weeklyBoxOfficeDicts['audiCnt'] = weeklyBoxOfficeList.get('audiCnt')
 
                 writer.writerow(weeklyBoxOfficeDicts)
-'''
 
+'''
 import csv
 import datetime
 import requests
@@ -83,3 +83,4 @@ with open('boxoffice.csv', 'w', encoding='utf-8') as f:
     csv_writer.writeheader()
     for item in movie_data.values():
         csv_writer.writerow(item)
+'''
