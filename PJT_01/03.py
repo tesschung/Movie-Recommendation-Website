@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from decouple import config
 import csv
 
-#영화인 목록에 접근하여 peopleCd를 가져올것이다.
+#영화인 목록에 접근하여 peopleCd를 가져온다.
 with open('movie.csv', 'r', newline='', encoding='utf-8') as f:
     reader = csv.DictReader(f)
 
