@@ -29,13 +29,21 @@ with open('movie.csv', 'r', newline='', encoding='utf-8') as f:
             CLIENT_ID = config('CLIENT_ID')
             CLIENT_SECRET = config('CLIENT_SECRET')
 
+            params = {
+
+                'query':query
+                
+                }
+
             HEADERS = {
+                
                 'X-Naver-Client-Id' : CLIENT_ID,
                 'X-Naver-Client-Secret' : CLIENT_SECRET, #trailing convention
+
             }
 
-            API_URL = f'{BASE_URL}?query={query}'
-            response = requests.get(API_URL, headers=HEADERS).json()
+            API_URL = f'{BASE_URL}?'
+            response = requests.get(API_URL, params=params, headers=HEADERS).json()
 
             movie_naver_dict = {}
 
