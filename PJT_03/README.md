@@ -1,6 +1,6 @@
 
 
-## Project_02: 
+## Project_03: 
 
 ## Web(HTML/CSS를 활용한 웹 사이트 구성)
 
@@ -21,11 +21,11 @@ Web(HTML/CSS를 활용한 웹 사이트 구성)
 1. HTML/CSS 환경 구성
 
 2. 웹 페이지를 위한 Assets 다운로드
-  index.html 에 마크업을 작성
-  layout.css 를 작성
-  reboot.css 는 브라우저 기본 설정 CSS를 모두 동일하게 설정하기 위해 사용
-  style.css 는 기본으로 제공되는 CSS 활용
-  images 폴더에는 활용할 포스터 이미지
+    index.html 에 마크업을 작성
+    layout.css 를 작성
+    reboot.css 는 브라우저 기본 설정 CSS를 모두 동일하게 설정하기 위해 사용
+    style.css 는 기본으로 제공되는 CSS 활용
+    images 폴더에는 활용할 포스터 이미지
 
   
 
