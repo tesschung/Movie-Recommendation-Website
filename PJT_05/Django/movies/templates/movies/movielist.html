@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Movie List {% endblock  %}
+
+{% block content %} 
+
+<div class="container"> 
+<h1 class="text-center">Movie List</h1>
+</div>  
+
+<div class="d-flex justify-content-center">
+<a href="/movies/new/" class="btn btn-dark">새로운 영화 목록 작성</a>
+</div>
+
+<div>
+<ul>
+{% for movie in movielist %} 
+<li>id: {{ movie.id }}</li>
+<li>title: {{ movie.title }} </li>
+<li>description: {{ movie.description }}</li>
+<a href="/movies/{{ movie.id }}/" class="btn btn-dark">상세보기</a>
+<a href="/movies/{{ movie.id }}/delete/" class="btn btn-dark">삭제</a>
+<a href="/movies/{{ movie.id }}/edit/" class="btn btn-dark">수정</a>
+<hr>
+{% endfor %}
+</ul>
+</div>
+
+
+{% endblock  %}

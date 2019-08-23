@@ -49,7 +49,7 @@ API 활용을 통해 데이터를 수집하고 내가 원하는 형태로 가공
 
 
 
-#### Developement Method
+#### Development Method
 
 1. 네이버 영화 검색 API - movie_naver.py
     지난 프로젝트(파이썬을 활용한 데이터 수집 I)에서 얻은 영화명(국문)을 바탕으로 네이버 영화 검색 API를 통해

@@ -147,7 +147,7 @@ API `영화진흥위원회 오픈 API`
 
 
 
-#### Developement Method
+#### Development Method
 
 1. http://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do
 

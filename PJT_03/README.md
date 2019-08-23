@@ -35,7 +35,7 @@ HTML/CSS 환경 구성
 
 
 
-#### Developement Method
+#### Development Method
 
 ```css
 /* header */
