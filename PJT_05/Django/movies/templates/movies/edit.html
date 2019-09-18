@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+{% endblock  %}
+
+{% block content %}
+
+<h1 class="text-center">게시글 작성</h1>
+<form action="/movies/{{ movie_pk }}/update/">
+
+<label for="title">title</label>
+<input id="title" type="text" name="title"><br>
+
+<label for="title_en">title_en</label>
+<input id="title_en" type="text" name="title_en"></input><br>
+
+<label for="audience">audience</label>
+<input id="audience" type="number" name="audience"></input><br>
+
+<label for="open_date">open_date</label>
+<input id="open_date" type="date" name="open_date"></input><br>
+
+<label for="genre">genre</label>
+<input id="genre" type="text" name="genre"></input><br>
+
+<label for="watch_grade">watch_grade</label>
+<input id="watch_grade" type="text" name="watch_grade"></input><br>
+
+<label for="score">score</label>
+<input id="score" type="float" name="score"></input><br>
+
+<label for="poster_url">poster_url</label>
+<input id="poster_url" type="text" name="poster_url"></input><br>
+
+<label for="description">description</label>
+<textarea id="description" type="text" name="description"></textarea><br>
+
+<button type="submit" class="btn btn-dark">수정하기</button>
+<a href="/movies/" class="btn btn-dark">뒤로가기</a>
+</form>
+{% endblock  %}
