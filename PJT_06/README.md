@@ -36,7 +36,7 @@
 
 #### Development Method
 
-models.py 정의
+#### models.py 정의
 
 ```python
 # 영화에 대한 정보
@@ -63,7 +63,7 @@ class Comment(models.Model):
 
 
 
-forms.py
+#### forms.py 
 
 ```python
 from django import forms
@@ -141,7 +141,7 @@ class CommentForm(forms.ModelForm):
 
 
 
-views.py
+#### views.py
 
 ```python
 from django.shortcuts import render, redirect, get_object_or_404
@@ -217,4 +217,6 @@ def review_delete(request, movie_pk, comment_pk):
     return redirect('movies:detail', movie_pk)
 
 ```
+
+
 
