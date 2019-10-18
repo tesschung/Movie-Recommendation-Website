@@ -220,3 +220,72 @@ def review_delete(request, movie_pk, comment_pk):
 
 
 
+#### Bootstrap4
+
+```bash
+student@M702 MINGW64 ~/development/PJT/PJT_06 (master)
+$ pip install django-bootstrap4
+
+# 설치후 third-party로 settings.py에 등록
+
+```
+
+
+
+base.html
+
+```html
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% bootstrap_css %}
+  <title>{% block title %}
+  {% endblock title %}</title>
+</head>
+<body>
+{% block body %}
+{% endblock body %}
+{% bootstrap_javascript jquery='full' %}
+</body>
+</html>
+```
+
+
+
+
+
+create.html
+
+```django
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+{% block title %}
+Movie::Create
+{% endblock title %}
+
+{% block body %}
+
+{% comment %} <form action="{% url 'movies:create' %}" method="POST">
+{% csrf_token %}
+{{ movieform.as_p }}
+
+<button type="submit">작성하기</button>
+</form> {% endcomment %}
+
+<form action="{% url 'movies:create' %}" method="POST">
+{% csrf_token %}
+{% bootstrap_form movieform layout='horizontal' %}
+{% buttons submit="생성하기" reset="Cancel "%}{% endbuttons %}
+</form>
+
+
+<a href="{% url 'movies:index' %}">목록</a>
+{% endblock body %}
+```
+

@@ -1,16 +1,27 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
+
 
 {% block title %}
 Movie::Create
 {% endblock title %}
 
 {% block body %}
-<form action="{% url 'movies:create' %}" method="POST">
+{% comment %} <form action="{% url 'movies:create' %}" method="POST">
 {% csrf_token %}
 {{ movieform.as_p }}
 
 <button type="submit">작성하기</button>
+</form> {% endcomment %}
+
+
+
+<form action="{% url 'movies:create' %}" method="POST">
+{% csrf_token %}
+{% bootstrap_form movieform layout='horizontal' %}
+{% buttons submit="생성하기" reset="Cancel "%}{% endbuttons %}
 </form>
+
 
 <a href="{% url 'movies:index' %}">목록</a>
 {% endblock body %}
