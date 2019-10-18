@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Movie::Create
+{% endblock title %}
+
+{% block body %}
+<form action="{% url 'movies:create' %}" method="POST">
+{% csrf_token %}
+{{ movieform.as_p }}
+
+<button type="submit">작성하기</button>
+</form>
+
+<a href="{% url 'movies:index' %}">목록</a>
+{% endblock body %}

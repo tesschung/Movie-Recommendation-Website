@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Movie::Update
+{% endblock title %}
+
+
+{% block body %}
+<form action="{% url 'movies:update' movie.pk %}" method="POST">
+{% csrf_token %}
+{{ movieform.as_p }}
+<button type="submit">수정하기</button>
+</form>
+{% endblock body %}

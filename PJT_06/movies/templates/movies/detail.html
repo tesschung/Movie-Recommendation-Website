@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Movie::Detail
+{% endblock title %}
+
+{% block body %}
+
+<p>{{ movie.title }}</p>
+<hr>
+<p>{{ movie.description }}</p>
+<hr>
+<p>{{ movie.score }}</p>
+<hr>
+
+<a href="{% url 'movies:index' %}">목록</a>
+<a href="{% url 'movies:update' movie.pk %}">수정</a>
+<a href="{% url 'movies:delete' movie.pk %}">삭제</a>
+
+<form action="{% url 'movies:reviews' movie.pk %}" method="POST">
+{% csrf_token %}
+{{ commentform.as_p }}
+
+<button type="submit">작성하기</button>
+</form>
+
+{% for comment in comments %}
+<p>{{ comment.content }}</p>
+<p>{{ comment.score }}</p>
+<a href="{% url 'movies:review_delete' movie.pk comment.pk %}">삭제하기</a>
+{% endfor %}
+
+
+{% endblock body %}

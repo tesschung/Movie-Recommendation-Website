@@ -1,0 +1,18 @@
+{
+    // 파이썬 환경 선택
+    "python.pythonPath": "venv\\Scripts\\python.exe",
+    // Django에서 사용되는 파일 타입에 대한 정의
+    "files.associations": {
+        "**/templates/*.html": "django-html",
+        "**/templates/*": "django-txt",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+    // Django-html에서도 html-emet을 적용
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    // Django-html에서 tab size를 2칸으로 고정
+    "[django-html]": {
+        "editor.tabSize": 2
+    },
+}

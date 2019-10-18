@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Movie::Index
+{% endblock title %}
+
+{% block body %}
+<a href="{% url 'movies:create' %}">새 영화 등록</a>
+<br>
+<hr>
+{% for movie in movies %}
+<img src="{% static 'movies/images/20175771-01.jpg' %}" alt="사진"><br>
+<a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a>
+<p>{{ movie.score }}</p>
+<hr>
+{% empty %}
+<p>등록된 영화가 없습니다.</p>
+<hr>
+{% endfor %}
+
+{% endblock body %}
