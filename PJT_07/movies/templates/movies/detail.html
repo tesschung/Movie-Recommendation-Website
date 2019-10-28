@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+<h1>{{ movie.title }} : {{ movie.title_en }}</h1>
+<hr>
+<div>
+    <div>누적관객수: {{ movie.audience }}</div>
+    <div>개봉일: {{ movie.open_date }}</div>
+    <div>장르: {{ movie.genre }}</div>
+    <div>관람등급: {{ movie.watch_grade }}</div>
+    <div>평점: {{ movie.score }}</div>
+    <div>포스터이미지: <img src="{{ movie.poster_url }}" alt=""></div>
+</div>
+<hr>
+<p>{{ movie.description }} </p>
+<div>  
+    <a href="{% url 'movies:index'%}">목록</a>
+
+    {% if request.user.is_authenticated %}
+        {% if request.user in movie.like_users.all %}
+            <a href="{% url 'movies:like' movie.pk%}"><i class="far fa-grin-beam fa-lg" style="color:red"></i></a>
+        {% else %}
+            <a href="{% url 'movies:like' movie.pk%}"><i class="far fa-frown-open fa-lg" style="color:aqua"></i></a>
+        {% endif %}
+
+
+    {% endif %}
+
+    {% if request.user == movie.user %}
+        <a href="{% url 'movies:update' movie.pk %}">수정</a>  
+        <form action="{% url 'movies:delete' movie.pk %}" method="post" style="display: inline-block;">
+            {% csrf_token %}
+            <input type="submit" value="삭제"/>
+        </form> 
+    {% endif %}
+</div>
+
+
+<ul>
+    {% for comment in movie.comments.all %}
+    <li>
+        {{ comment.content }} : {{ comment.score }}
+        <form action="{% url 'movies:comments_delete' movie.pk comment.pk %}" style="display: inline-block;" method="post">
+            {% csrf_token %}
+            {% if request.user == comment.user %}
+                <input type="submit" value="삭제"/>
+            {% endif %}
+        </form>
+    </li>
+    {% empty %}
+    <p>한줄평이 없습니다. 평가해주세요.</p>
+    {% endfor %}
+</ul>
+{% if request.user.is_authenticated %}
+    <form action="{% url 'movies:review' movie.pk %}" method="post">
+        {% csrf_token %}
+        {{ comment_form }}
+        <input type="submit" value="작성"/>
+    </form>
+{% else %}
+    <p>로그인이 필요합니다.</p>
+{% endif %}
+
+
+
+{% endblock %}

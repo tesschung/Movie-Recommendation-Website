@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Accounts: signup{% endblock title %}
+
+{% block container %}
+  <form action="{% url 'accounts:signup' %}" method='post'>
+  {% csrf_token %}
+  
+  {{ form.as_p }}
+
+  <button type="submit">제출하기</button>
+
+  </form>
+  
+
+{% endblock container %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block container %}
+<h1>새 영화 등록</h1>
+
+<form method="post" action="{% url 'movies:create' %}">
+    {% csrf_token %}
+    {{ movie_form.as_p }}
+    <input type="submit" value="등록">
+</form>
+{% endblock container %}

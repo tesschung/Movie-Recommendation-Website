@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+<h1>영화 정보 수정</h1>
+
+<form method="post" action="{% url 'movies:update' movie_pk %}">
+    {% csrf_token %}
+    {{ movie_form.as_p }}
+    <input type="submit" value="수정"/>
+</form>
+{% endblock %}

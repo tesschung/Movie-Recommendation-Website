@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>영화 추천</title>
+    <!-- Place your kit's code here -->
+      <script src="https://kit.fontawesome.com/f0508c926b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}">로그아웃</a>
+    <br>
+    <a href="{% url 'movies:like_list' %}">좋아요 목록 보기</a>
+    <br>
+    <a href="{% url 'accounts:detail' user.pk %}">회원정보</a>
+    <br>
+    <a href="{% url 'accounts:index' %}">회원목록</a>
+    {% else %}
+    <a href="{% url 'accounts:login' %}">로그인</a>
+    <br>
+    <a href="{% url 'accounts:signup' %}">회원가입</a>
+    {% endif %}
+    <a href=""></a>
+    <header>
+        <a href="{% url 'movies:index' %}">영화목록</a>
+        {% comment %} <a href="{% url 'movies:create' %}">영화 정보 생성</a> {% endcomment %}
+    </header>
+    <hr>
+    <div class="container">
+        {% block container %}{% endblock %}
+    </div>
+     <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</body>
+</html>

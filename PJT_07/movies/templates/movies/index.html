@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block container %}
+{% load static %}
+<h1>영화 목록</h1>
+{% if request.user.is_authenticated %}
+    <div>
+        <a href="{% url 'movies:create' %}">새 영화 등록</a>
+    </div>
+{% else %}
+    <p>영화를 등록하려면 로그인이 필요합니다.</p>
+{% endif %}
+
+    <img src="{% static 'movies/image.jpg' %}"/>
+<ul>
+    {% for movie in movies %}
+    <li>
+        <a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a>
+        <span>{{ movie.score }}</span>
+    </li>
+    {% empty %}
+    <p>저장된 영화가 없습니다. 새 영화를 등록해주세요</p>
+    {% endfor %}
+</ul>
+{% endblock container %}

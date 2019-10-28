@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Acconts:index{% endblock title %}
+
+{% block container %}
+
+{% for user in users %}
+  <ul>
+    <a href="{% url 'accounts:detail' user.pk %}">
+      {{ user.username }}
+    </a>
+  </ul>
+{% endfor %}
+
+{% endblock container %}

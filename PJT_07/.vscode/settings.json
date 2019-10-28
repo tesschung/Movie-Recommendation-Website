@@ -1,0 +1,14 @@
+{
+    "python.pythonPath": "venv\\Scripts\\python.exe",
+    
+    "emmet.includeLanguages": {"django-html": "html"},
+
+    "files.associations": {
+        "**/templates/*.html": "django-html",
+        "**/templates/*": "django-txt",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+    "[django-html]": {
+        "editor.tabSize": 2
+    },
+}

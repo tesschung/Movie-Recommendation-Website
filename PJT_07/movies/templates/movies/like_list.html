@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Movies:like_list{% endblock title %}
+
+{% block container %}
+
+{% for movie in user.like_movies.all %}
+<p>{{ movie.title }}</p>
+{% endfor %}
+
+{% endblock container %}
