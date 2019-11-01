@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+  <title>Momentum</title>
+</head>
+<style>
+  /* html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+   */
+  /* 이미지 등록 */
+  /* Axios 사용해서 img 태그를 등록하여 다음과 같이 replace */
+  /* https://images.unsplash.com/photo-1568305179533-c9c4aa7f4cc4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1920 */
+  /* https://source.unsplash.com/1920x1080/?nature,water */
+  /* https://source.unsplash.com/1920x1080/?nature,night */
+  /* body {
+    background-image: url('eclips.jpg');
+    position: absolute;
+  } */
+
+  
+</style>
+
+<body>
+<p style="color:white; font-size:100px; text-align:center; font-family: Nanum Gothic, sans-serif; margin-top:100px; font-weight: bold;"></p>
+
+
+<h1 id="clock">00:00:00</h1>
+
+
+<div style="margin-left:325px">
+  <h2 style="color: white; font-family: Nanum Gothic, sans-serif;">To do</h2>
+  <input type="text">
+  <button>Add item</button>
+  <ul>
+  </ul>
+</div>
+
+
+  <script>
+  // 1. Axios 로 image url을 가져온다.
+  // const axios = require('axios')
+  // 글로벌로 사용할 예정
+  const url = 'https://source.unsplash.com/1920x1080/?nature,night'
+  const body = document.querySelector('body')
+  const div = document.querySelector('div')
+  const input = document.querySelector('input')
+  const h2 = document.querySelector('h2')
+  const ul = document.querySelector('ul')
+  const button = document.querySelector('button')
+
+  axios.get(url)
+  .then(function(response) {
+    console.log(response)
+    
+    // 더 타고 들어가야 한다.
+    let imageUrl = response.request.responseURL
+    
+    if (imageUrl === 'https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200') {
+      imageUrl = 'https://images.unsplash.com/photo-1548391350-968f58dedaed?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1920'
+    }
+    body.background = imageUrl
+    
+    // body.position = 'relative'
+    console.log(imageUrl) 
+  }) 
+
+  // 2. 시간이랑 문구 JS 로 Element 생성하여 삽입
+  const clock = document.querySelector('#clock')
+  console.log(clock)
+  clock.style= 'color:white; font-size:120px; text-align:center; font-family: Nanum Gothic, sans-serif; margin-top:100px; font-weight: bold; letter-spacing: -2px;'
+  function showClock() {
+    const now = new Date()
+    const hour = now.getHours()
+    const minute = now.getMinutes()
+    const second = now.getSeconds()
+    clock.innerHTML = `${hour < 10 ? `0${hour}` : hour}:${minute < 10 ? `0${minute}` : minute}:${second < 10 ? `0${second}` : second}`
+  }
+  function init() {
+    showClock()
+    setInterval(showClock, 1000)
+  }
+  init()
+  // body.appendChild(h1) // 맨뒤에 추가
+  
+
+  // 3. Todo 기능 구현 (advanced)
+  // 버튼을 클릭하면 창이 뜨도록 구현
+  // js 로 구현
+  button.addEventListener('click', event =>
+  {
+    const li = document.createElement('li')
+
+    if ( input.value === '' ){
+      alert('write your thoguhts')
+      return
+    }
+    
+    const deleteButton = document.createElement('Button')
+    li.innerText = input.value
+    li.style="color: white;"
+    deleteButton.innerText = 'delete'
+
+    ul.insertBefore(li, ul.firstElementChild)
+    li.appendChild(deleteButton, li.deleteButton)
+
+    deleteButton.addEventListener('click', (event) => {
+      fin = confirm('정말로 삭제하시겠습니까?') // 확인시 true 취소시 false
+      if (fin === true) {
+        li.remove()
+      }
+    })
+
+  })
+
+
+
+  // 4. 날씨 API 통해서 오늘의 날씨 불러온 뒤 출력 
+  let p = document.querySelector('p')
+  const weatherDataURL = 'http://api.openweathermap.org/data/2.5/weather?q=Seoul,KR&APPID=cb5b4ab8957d35f370cc1bdd030b1cca'
+  axios.get(weatherDataURL)
+  .then(function(response){
+  console.log(response)
+  const weatherCity = response.data.name
+  const weatherData = response.data.weather[0].description
+  const temperature = (response.data.main.temp - 273.15).toFixed()
+  console.log(weatherData)
+  p.innerText = `${temperature}°C ${weatherCity} ${weatherData}`
+  })
+
+  </script>
+
+
+</body>
+</html>

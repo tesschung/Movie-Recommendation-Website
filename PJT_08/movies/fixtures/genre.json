@@ -1,0 +1,79 @@
+[
+    {
+        "pk": 1,
+        "model": "movies.genre",
+        "fields": {
+            "name": "가족"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "movies.genre",
+        "fields": {
+            "name": "공포(호러)"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "movies.genre",
+        "fields": {
+            "name": "드라마"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "movies.genre",
+        "fields": {
+            "name": "멜로/로맨스"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "movies.genre",
+        "fields": {
+            "name": "미스터리"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "movies.genre",
+        "fields": {
+            "name": "사극"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "movies.genre",
+        "fields": {
+            "name": "스릴러"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "movies.genre",
+        "fields": {
+            "name": "액션"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "movies.genre",
+        "fields": {
+            "name": "어드벤처"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "movies.genre",
+        "fields": {
+            "name": "판타지"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "movies.genre",
+        "fields": {
+            "name": "코미디"
+        }
+    }
+]

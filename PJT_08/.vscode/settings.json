@@ -1,0 +1,13 @@
+{
+    "python.pythonPath": "c:\\Users\\student\\development\\PJT\\pjt\\PJT_08\\venv\\Scripts\\python.exe",
+    "files.associations": {
+        "**/templates/*.html": "django-html",
+        "**/templates/*": "django-txt",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+    "emmet.includeLanguages": {"django-html": "html"},
+    "[django-html]": {
+        "editor.tabSize": 2
+    },
+    "git.ignoreLimitWarning": true
+}
