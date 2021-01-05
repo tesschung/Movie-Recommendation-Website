@@ -4,7 +4,7 @@
   "description": "1. 사진 api 로 배경화면 불러오기 및 설정",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.19.0"
+    "axios": "^0.21.1"
   },
   "devDependencies": {},
   "scripts": {
